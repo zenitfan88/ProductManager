@@ -53,6 +53,10 @@ public class TestManager {
         Product[] actual = manager.removeByID(323);
         Product[] expected = {book1, book2, smart2};
         Assertions.assertArrayEquals(actual, expected);
+
+        Product[] actual1 = manager.removeByID(235);
+        Product[] expected1 = {book1, book2, smart1, smart2};
+        Assertions.assertArrayEquals(actual1, expected1);
     }
 
     @Test

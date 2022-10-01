@@ -20,16 +20,17 @@ public class ProductManger {
     }
 
     public Product[] removeByID(int id) {
-        int length = products.length - 1;
-        Product[] tmp = new Product[length];
-        int index = 0;
-        for (Product item : products) {
-            if (item.getId() != id) {
-                tmp[index] = item;
-                index++;
+        Product[] tmp = new Product[0];
+        for (Product product : products) {
+            if (product.getId() != id) {
+                Product[] newtmp = new Product[tmp.length + 1];
+                for (int i = 0; i < tmp.length; i++) {
+                    newtmp[i] = tmp[i];
+                }
+                newtmp[newtmp.length - 1] = product;
+                tmp = newtmp;
             }
         }
-        products = tmp;
         return tmp;
     }
 
