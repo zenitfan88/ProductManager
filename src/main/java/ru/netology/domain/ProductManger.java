@@ -19,7 +19,7 @@ public class ProductManger {
         return findAll;
     }
 
-    public Product[] removeByID(int id) {
+    public Product[] removeById(int id) {
         int length = products.length - 1;
         Product[] tmp = new Product[length];
         int index = 0;
