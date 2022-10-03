@@ -25,7 +25,7 @@ public class ProductManger {
 
     public Product[] removeById(int id) {
         if (findById(id) == null) {
-            throw new NotFoundException(" Element with id: " + id);
+            throw new NotFoundException(" Element with id: " + id + " not found");
         }
         int length = products.length - 1;
         Product[] tmp = new Product[length];
