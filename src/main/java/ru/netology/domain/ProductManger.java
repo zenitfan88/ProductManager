@@ -1,5 +1,8 @@
 package ru.netology.domain;
 
+
+import java.util.Arrays;
+
 public class ProductManger {
 
     private Product[] products = new Product[0];
@@ -13,13 +16,17 @@ public class ProductManger {
         products = tmp;
     }
 
+
     public Product[] findAll() {
         Product[] findAll = new Product[products.length];
         System.arraycopy(products, 0, findAll, 0, products.length);
         return findAll;
     }
 
-    public Product[] removeByID(int id) {
+    public Product[] removeById(int id) {
+        if (findById(id) == null) {
+            throw new NotFoundException(" Element with id: " + id);
+        }
         int length = products.length - 1;
         Product[] tmp = new Product[length];
         int index = 0;
@@ -31,6 +38,15 @@ public class ProductManger {
         }
         products = tmp;
         return tmp;
+    }
+
+    public Product findById(int id) {
+        for (Product product : findAll()) {
+            if (product.getId() == id) {
+                return product;
+            }
+        }
+        return null;
     }
 
     public Product[] searchBy(String text) {
